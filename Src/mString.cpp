@@ -42,6 +42,20 @@ String String::operator+(const String& str2) const
     cout << "+ operator call" << endl;
     return result;
 }
+String& String::operator+=(const String& str2)
+{
+    unsigned int newLen = len + str2.len;
+    char* temp = new char[newLen + 1];
+
+    strcpy_s(temp, newLen + 1, chr);
+    strcat_s(temp, newLen + 1, str2.chr);
+
+    delete[] chr;
+    chr = temp;
+    len = newLen;
+    cout << "+= operator call" << endl;
+    return *this;
+}
 std::ostream& operator<<(std::ostream& out,const String& str)
 {
     cout << "<< operator call" << endl;

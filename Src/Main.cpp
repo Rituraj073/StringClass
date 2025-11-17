@@ -5,8 +5,9 @@ int main()
 {
     String fname = "Rituraj";
     String lname(" Prasad");
-;
-    cout << fname + lname << endl << endl;
+
+    fname += lname;
+    cout << fname << endl << endl;
 
     return 0;
 }

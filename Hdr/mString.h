@@ -15,5 +15,6 @@ public:
     String& operator=(const String&);
 
     String operator+(const String&) const;
+    String& operator+=(const String&);
     friend std::ostream& operator<<(std::ostream&,const String&);
 };
