@@ -56,9 +56,23 @@ String& String::operator+=(const String& str2)
     cout << "+= operator call" << endl;
     return *this;
 }
-std::ostream& operator<<(std::ostream& out,const String& str)
+std::ostream& operator<<(std::ostream& out, const String& str)
 {
     cout << "<< operator call" << endl;
-    if (str.chr) std::cout << str.chr;
+    if (str.chr) out << str.chr;
     return out;
+}
+std::istream& operator>>(std::istream& in, String& str)
+{
+    cout << ">> operator call" << endl;
+    char temp[128];
+    in.getline(temp, 128);
+
+    delete[] str.chr;
+
+    str.len = strlen(temp);
+    str.chr = new char[str.len + 1];
+    strcpy_s(str.chr, str.len + 1, temp);
+
+    return in;
 }
